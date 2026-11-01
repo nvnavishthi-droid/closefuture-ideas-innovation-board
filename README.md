@@ -1,198 +1,254 @@
 # CloseFuture – Ideas & Innovation Board
 
-A role-based web application designed to help organizations collect, manage, evaluate, and track employee ideas through a structured innovation workflow.
+A web-based platform that helps organizations collect, evaluate, manage, and track employee ideas and innovations.
 
-## Project Overview
+## Overview
 
-CloseFuture – Ideas & Innovation Board provides a centralized platform where members can submit ideas, collaborate through discussions, vote on ideas, and follow interesting submissions.
+CloseFuture provides a centralized space where employees can submit innovative ideas, collaborate through comments, vote on ideas, and follow their progress.
 
-Administrators can review ideas, evaluate their impact and effort, assign owners, and monitor implementation progress.
+Administrators can evaluate submissions, assign owners, manage idea status, and monitor implementation progress.
 
-The platform encourages innovation, improves collaboration, and makes idea management more transparent.
+The platform aims to encourage innovation, improve collaboration, and turn valuable ideas into actionable projects.
 
 ## Key Features
 
-### Member Features
-- User registration and login.
-- Submit new ideas and save drafts.
-- Edit eligible submissions and delete drafts.
-- Submit ideas anonymously.
-- View and search community ideas.
-- Filter ideas by status, category, owner, and evaluation quadrant.
-- Sort ideas by votes, newest, and recently updated.
-- Vote and remove votes on eligible ideas.
-- Comment on ideas and participate in discussions.
-- Follow and unfollow ideas.
-- Track drafts, submissions, owned ideas, and followed ideas.
-- View implementation progress and demo details.
+### Authentication and User Management
+- Email and password authentication.
+- Member and Administrator roles.
+- Role-based access control.
+- User profile management.
 
-### Admin Features
-- Admin dashboard and idea review queue.
+### Idea Management
+- Submit new ideas.
+- Save ideas as drafts.
+- Edit eligible submissions.
+- Delete draft ideas.
+- Submit ideas anonymously.
+- Categorize ideas by business area.
+
+### Community Collaboration
+- Browse submitted ideas.
+- Search and filter ideas.
+- Sort ideas by votes and recent activity.
+- Vote and remove votes.
+- Follow and unfollow ideas.
+- Add comments and replies.
+- Edit or delete comments within the allowed time limit.
+
+### Idea Evaluation and Administration
+- Dedicated administrator dashboard.
 - Review submitted ideas.
-- Request additional information.
-- Evaluate ideas using impact and effort scores.
-- Categorize ideas into evaluation quadrants.
-- Approve, reject, park, and manage idea statuses.
+- Evaluate impact and implementation effort.
+- Automatically classify ideas into evaluation quadrants.
+- Approve, reject, park, or request additional information.
 - Assign and reassign idea owners.
-- View anonymous submitter identities through authorized access.
-- Track overdue ideas and status history.
+- Track status history and ownership changes.
 
 ### Implementation Tracking
-- Assign an owner and target date.
-- Add implementation progress updates.
-- Upload demo videos or provide supported external demo links.
-- Add outcome summaries for completed ideas.
-- Maintain status transition history.
+- Track approved ideas through implementation.
+- Set target completion dates.
+- Add progress updates.
+- Monitor overdue ideas.
+- Upload demonstration videos.
+- Add external demo links and outcome summaries.
 
-## Technology Stack
+### Idea Evaluation Quadrants
 
-| Component | Technology |
+| Quadrant | Description |
 |---|---|
-| Frontend | Next.js |
-| Language | TypeScript |
-| Styling | Tailwind CSS |
-| Backend | Next.js Server Actions and Server Components |
-| Database | PostgreSQL |
-| Authentication | Supabase Auth |
-| Backend Services | Supabase |
-| File Storage | Supabase Storage |
-| Version Control | Git and GitHub |
-
-## User Roles
-
-**Member**
-- Submit and manage ideas.
-- Vote, comment, and follow ideas.
-- View community submissions.
-- Track assigned work and progress.
-
-**Admin**
-- Review and evaluate ideas.
-- Manage idea statuses.
-- Assign owners and monitor implementation.
-- Access anonymous submitter details through authorized functionality.
+| Quick Win | High impact, low effort |
+| Big Bet | High impact, high effort |
+| Fill-in | Low impact, low effort |
+| Not Worth It | Low impact, high effort |
 
 ## Idea Workflow
 
-The main workflow is:
+Ideas move through the following statuses:
 
-Draft → Submitted → Under Evaluation → Approved → In Progress → Done
+`Draft → Submitted → Under Evaluation → Approved → In Progress → Done`
 
-Additional statuses:
+Additional statuses include:
 - Needs More Info
 - Rejected
 - Parked
 - Withdrawn
 
-Status transitions are controlled by role-based permissions and application business rules.
+The platform enforces permitted status transitions and records status history.
+
+## User Roles
+
+**Member**
+- Submit and manage personal ideas.
+- Browse community ideas.
+- Vote, comment, and follow ideas.
+- Track owned and followed ideas.
+- Update implementation progress when assigned as an owner.
+
+**Administrator**
+- Access the administrator dashboard.
+- Review and evaluate submissions.
+- Manage idea statuses.
+- Assign and reassign owners.
+- Monitor implementation and overdue ideas.
+
+## Technology Stack
+
+| Layer | Technologies |
+|---|---|
+| Frontend | Next.js, React, TypeScript |
+| Styling | Tailwind CSS |
+| Backend | Next.js Server Actions and Route Handlers |
+| Database | Supabase PostgreSQL |
+| Authentication | Supabase Auth |
+| Security | Row Level Security (RLS) |
+| File Storage | Supabase Storage |
+| Version Control | GitHub |
+
+## Project Structure
+
+```text
+closefuture/
+│
+├── app/
+│   ├── admin/
+│   ├── dashboard/
+│   ├── ideas/
+│   ├── login/
+│   ├── register/
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+│
+├── public/
+│
+├── utils/
+│   └── supabase/
+│
+├── supabase/
+│   ├── migrations/
+│   │   ├── 001_initial_schema.sql
+│   │   └── 002_functions_policies_and_storage.sql
+│   └── seed.sql
+│
+├── AGENTS.md
+├── package.json
+├── package-lock.json
+├── tsconfig.json
+└── README.md
+```
 
 ## Getting Started
 
 ### Prerequisites
-- Node.js (LTS recommended)
+
+- Node.js
 - npm
 - A Supabase account
-- Git
+- GitHub account
 
 ### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/YOUR-GITHUB-USERNAME/closefuture-ideas-innovation-board.git
-cd closefuture-ideas-innovation-board
 ```
 
 Replace `YOUR-GITHUB-USERNAME` with your GitHub username.
 
-### 2. Install Dependencies
+### 2. Open the Project
+
+```bash
+cd closefuture-ideas-innovation-board
+```
+
+### 3. Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Configure Environment Variables
+### 4. Configure Environment Variables
 
 Create a `.env.local` file in the project root.
+
+Add your Supabase project credentials:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
 ```
 
-Replace the placeholders with your Supabase project details.
+Use your own Supabase project values. Never upload `.env.local` or private credentials to GitHub.
 
-**Security:** Never upload `.env.local`, passwords, service-role keys, or other secret credentials to GitHub.
+### 5. Configure Supabase
 
-### 4. Configure Supabase
+The `supabase/` directory contains the database setup scripts.
 
-- Create a Supabase project.
-- Configure email/password authentication.
-- Apply the database schema, SQL functions, and Row Level Security policies.
-- Configure the `idea-demos` Storage bucket and its access policies.
+- `001_initial_schema.sql` – Database tables, relationships, constraints, indexes, and RLS enablement.
+- `002_functions_policies_and_storage.sql` – Database functions, RLS policies, permissions, and demo storage configuration.
+- `seed.sql` – Sample idea records for demonstration.
 
-Database setup scripts and seed data will be maintained in the repository's `supabase/` directory.
+For a fresh Supabase project, review and apply the migration scripts in order. Register users through Supabase Auth and configure the administrator role separately.
 
-### 5. Run the Application
+Review the SQL against the target database before execution. Do not run these scripts against an existing production database without checking for conflicts.
+
+### 6. Run the Development Server
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Database and Security
-
-The application uses PostgreSQL with Supabase Row Level Security (RLS).
-
-Security features include:
-- Role-based access for Members and Admins.
-- Database-level access policies.
-- Controlled database functions for important operations.
-- Restrictions on voting for one's own ideas.
-- Anonymous submitter identity protection.
-- Authorization checks for status changes and ownership.
-- Private demo-video storage with controlled access.
-
-## Project Structure
+Open the following address in your browser:
 
 ```text
-closefuture/
-├── app/
-│   ├── dashboard/
-│   ├── ideas/
-│   ├── login/
-│   ├── register/
-│   └── ...
-├── public/
-├── utils/
-├── supabase/          # Database scripts (to be added)
-├── AGENTS.md
-├── eslint.config.mjs
-├── next-env.d.ts
-├── next.config.ts
-├── package.json
-├── package-lock.json
-├── proxy.ts
-├── tsconfig.json
-└── README.md
+http://localhost:3000
 ```
+
+## Security
+
+CloseFuture uses multiple security mechanisms:
+
+- Supabase Authentication for user login.
+- Role-based authorization for administrative operations.
+- PostgreSQL Row Level Security.
+- Database functions for sensitive operations.
+- Anonymous submission privacy.
+- Server-side authorization checks.
+- Private Supabase Storage for demonstration videos.
+
+Sensitive operations are validated on the backend rather than relying only on frontend restrictions.
+
+## Database Design
+
+The application uses the following main tables:
+
+- `profiles`
+- `ideas`
+- `idea_private_details`
+- `idea_votes`
+- `idea_followers`
+- `idea_comments`
+- `idea_status_history`
+- `idea_owner_history`
+- `idea_progress_updates`
+
+These tables maintain idea information, user relationships, collaboration activities, and implementation history.
 
 ## Future Enhancements
 
 - Email and in-app notifications.
-- Advanced analytics and reporting.
 - Integration with project management tools.
-- AI-assisted idea categorization and summarization.
-- Enhanced collaboration features.
+- Advanced analytics and reporting.
+- AI-powered idea recommendations.
+- Automated duplicate idea detection.
+- Collaboration and team-based innovation features.
 
 ## Project Status
 
-The core application workflows have been implemented and tested, including authentication, idea submission, community interaction, admin evaluation, status management, ownership assignment, progress tracking, and demo submission.
-
-Further improvements and testing can be added in future versions.
+The core application features have been implemented, including authentication, idea management, community collaboration, administrator evaluation, workflow tracking, and demonstration video handling.
 
 ## Author
 
 **Navishthi N V**
 
-CloseFuture – Ideas & Innovation Board  
-Internship Project | 2026
+B.E. Computer Science and Engineering
+
