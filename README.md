@@ -278,4 +278,4 @@ B.E. Computer Science and Engineering
 
 ## Repository
 
-GitHub: https://github.com/YOUR-GITHUB-USERNAME/closefuture-ideas-innovation-board
+GitHub: https://github.com/nvnavishthi-droid/closefuture-ideas-innovation-board
