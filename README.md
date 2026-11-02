@@ -113,8 +113,6 @@ git clone https://github.com/nvnavishthi-droid/closefuture-ideas-innovation-boar
 cd closefuture-ideas-innovation-board
 ```
 
-Replace `nvnavishthi-droid` with your GitHub username.
-
 ### 2. Install Dependencies
 
 ```bash
