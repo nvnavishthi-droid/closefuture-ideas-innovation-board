@@ -109,11 +109,11 @@ Install the following before running the project:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR-GITHUB-USERNAME/closefuture-ideas-innovation-board.git
+git clone https://github.com/nvnavishthi-droid/closefuture-ideas-innovation-board.git
 cd closefuture-ideas-innovation-board
 ```
 
-Replace `YOUR-GITHUB-USERNAME` with your GitHub username.
+Replace `nvnavishthi-droid` with your GitHub username.
 
 ### 2. Install Dependencies
 
@@ -121,22 +121,7 @@ Replace `YOUR-GITHUB-USERNAME` with your GitHub username.
 npm install
 ```
 
-### 3. Configure Environment Variables
-
-Create a `.env.local` file in the project root.
-
-Add the following variables:
-
-```env
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
-```
-
-Use the values from your Supabase project settings.
-
-Do not upload `.env.local` or any private credentials to GitHub.
-
-### 4. Configure Supabase
+### 3. Configure Supabase
 
 Create a Supabase project.
 
@@ -147,7 +132,7 @@ Apply the SQL scripts in the following order:
 
 Review the SQL scripts before applying them to a new database.
 
-### 5. Create Demo Accounts
+### 4. Create Demo Accounts
 
 Register users through Supabase Authentication.
 
@@ -163,7 +148,7 @@ Configure the corresponding profiles with the appropriate roles:
 
 Demo login credentials should be shared securely with the evaluator. Do not publish passwords or private credentials in this repository.
 
-### 6. Insert Sample Data
+### 5. Insert Sample Data
 
 After creating the required accounts and applying the migrations, run:
 
@@ -177,7 +162,7 @@ It creates sample ideas across the workflow statuses, including Draft, Submitted
 
 The seed script does not create Supabase Auth accounts or passwords.
 
-### 7. Run the Application
+### 6. Run the Application
 
 ```bash
 npm run dev
